@@ -15,9 +15,9 @@ public class TestBase {
     static void beforeAll() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
 
-//        Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.startMaximized = true;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud:4444/wd/hub";
+        Configuration.browser = System.getProperty("browser", "chrome");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);

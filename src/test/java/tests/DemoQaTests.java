@@ -91,7 +91,6 @@ public class DemoQaTests extends TestBase {
     @Test
     void SubmitFailedForm() {
 
-        Thread.sleep(10000);
         step("Open students registration form", () -> {
             open("https://demoqa.com/automation-practice-form");
         });
