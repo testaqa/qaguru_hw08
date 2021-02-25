@@ -13,23 +13,25 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 public class DemoQaTests extends TestBase {
-    Faker faker = new Faker();
 
-    String firstName = faker.name().firstName();
-    String lastName = faker.name().lastName();
-    String email = faker.internet().emailAddress();
-    String gender = "Other";
-    String mobile = faker.phoneNumber().subscriberNumber(10);
-    LocalDate birthday = faker.date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    String subjects = "Maths";
-    String hobby = "Reading";
-    String pictureFile = "test.png";
-    String address = faker.address().fullAddress();
-    String state = "Haryana";
-    String city = "Panipat";
 
     @Test
     void SubmitForm() {
+
+        Faker faker = new Faker();
+
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String email = faker.internet().emailAddress();
+        String gender = "Other";
+        String mobile = faker.phoneNumber().subscriberNumber(10);
+        LocalDate birthday = faker.date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String subjects = "Maths";
+        String hobby = "Reading";
+        String pictureFile = "test.png";
+        String address = faker.address().fullAddress();
+        String state = "Haryana";
+        String city = "Panipat";
 
         step("Open students registration form", () -> {
             open("https://demoqa.com/automation-practice-form");
@@ -91,34 +93,6 @@ public class DemoQaTests extends TestBase {
 
         step("Open students registration form", () -> {
             open("https://demoqa.com/automation-practice-form");
-        });
-
-        step("Fill the form", () -> {
-//            $("#firstName").setValue(firstName);
-
-            $("#lastName").setValue(lastName);
-
-            $("#userEmail").setValue(email);
-
-            $("input[name=gender][value=" + gender + "] ~ label").click();
-
-            $("#userNumber").setValue(mobile);
-
-            $("#dateOfBirthInput").sendKeys(Keys.chord(Keys.CONTROL, "a"));
-            $("#dateOfBirthInput").sendKeys(birthday.format(DateTimeFormatter.ofPattern("dd LLLL yyyy")));
-            $("#dateOfBirthInput").pressEnter();
-
-            $("#subjectsInput").setValue(subjects).pressEnter();
-
-            $x("//label[contains(text(), '" + hobby + "')]").click();
-
-            $("#uploadPicture").uploadFromClasspath(pictureFile);
-
-            $("#currentAddress").setValue(address);
-
-            $("#state input").setValue(state).pressEnter();
-
-            $("#city input").setValue(city).pressEnter();
         });
 
         step("Click submit", () -> {
