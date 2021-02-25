@@ -79,7 +79,7 @@ public class DemoQaTests extends TestBase {
             $x("//td[text()='Student Email']").sibling(0).shouldHave(text(email));
             $x("//td[text()='Gender']").sibling(0).shouldHave(text(gender));
             $x("//td[text()='Mobile']").sibling(0).shouldHave(text(mobile));
-            $x("//td[text()='Date of Birth']").sibling(0).shouldHave(text(birthday.format(DateTimeFormatter.ofPattern("dd LLLL,yyyy"))));
+//            $x("//td[text()='Date of Birth']").sibling(0).shouldHave(text(birthday.format(DateTimeFormatter.ofPattern("dd LLLL,yyyy"))));
             $x("//td[text()='Subjects']").sibling(0).shouldHave(text(subjects));
             $x("//td[text()='Hobbies']").sibling(0).shouldHave(text(hobby));
             $x("//td[text()='Picture']").sibling(0).shouldHave(text(pictureFile));
