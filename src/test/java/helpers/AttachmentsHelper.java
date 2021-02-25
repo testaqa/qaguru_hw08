@@ -36,7 +36,7 @@ public class AttachmentsHelper {
 
     public static String getVideoUrl() {
 //        return System.getProperty("video_storage") + getSessionId() + ".mp4";
-          return "https://selenoid.autotests.cloud/video" + getSessionId() + ".mp4";
+          return "https://selenoid.autotests.cloud/video/" + getSessionId() + ".mp4";
     }
 
     public static String getSessionId(){
