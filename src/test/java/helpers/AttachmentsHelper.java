@@ -35,11 +35,10 @@ public class AttachmentsHelper {
     }
 
     public static String getVideoUrl() {
-//        return System.getProperty("video_storage") + getSessionId() + ".mp4";
-          return "https://selenoid.autotests.cloud/video/" + getSessionId() + ".mp4";
+        return "https://" + System.getProperty("selenoid_url") + "/video/" + getSessionId() + ".mp4";
     }
 
-    public static String getSessionId(){
+    public static String getSessionId() {
         return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
     }
 
