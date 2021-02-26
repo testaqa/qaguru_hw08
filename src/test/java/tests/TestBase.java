@@ -16,35 +16,19 @@ public class TestBase {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
 
         Configuration.startMaximized = true;
-//        Configuration.remote = System.getProperty("remote_driver")
-        Configuration.remote = "https://" + System.getProperty("selenoid_credentials") + "@" + System.getProperty("selenoid_url") + ":4444/wd/hub";
         Configuration.browser = System.getProperty("browser", "chrome");
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-        Configuration.browserCapabilities = capabilities;
-//        if(System.getProperty("remote_driver") != null) {
-//            // config for Java + Selenide
-//            DesiredCapabilities capabilities = new DesiredCapabilities();
-//            capabilities.setCapability("enableVNC", true);
-//            capabilities.setCapability("enableVideo", true);
-//            Configuration.browserCapabilities = capabilities;
-//            Configuration.remote = System.getProperty("remote_driver");
-//
-//            // config for Java + Selenium
-////        DesiredCapabilities capabilities = new DesiredCapabilities();
-////        capabilities.setCapability("browserName", "chrome");
-////        capabilities.setCapability("browserVersion", "87.0");
-////        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-////                "enableVNC", true,
-////                "enableVideo", true
-////        ));
-////        RemoteWebDriver driver = new RemoteWebDriver(
-////                URI.create("http://selenoid:4444/wd/hub").toURL(),
-////                capabilities
-////        );
-//        }
+        if (System.getProperty("selenoid_url") != null) {
+            Configuration.remote =
+                    "https://"
+                    + System.getProperty("selenoid_credentials")
+                    + "@"
+                    + System.getProperty("selenoid_url") + ":4444/wd/hub";
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+            Configuration.browserCapabilities = capabilities;
+        }
     }
 
     @AfterEach
@@ -53,8 +37,6 @@ public class TestBase {
         attachPageSource();
         attachAsText("Browser console logs", getConsoleLogs());
         attachVideo();
-//        if(System.getProperty("video_storage") != null)
-//            attachVideo();
         Selenide.closeWebDriver();
     }
 }
