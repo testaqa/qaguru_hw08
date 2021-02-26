@@ -17,7 +17,7 @@ public class TestBase {
 
         Configuration.startMaximized = true;
 //        Configuration.remote = System.getProperty("remote_driver")
-        Configuration.remote = System.getProperty("selenoid_credentials") + "@" + System.getProperty("selenoid_url") + ":4444/wd/hub";
+        Configuration.remote = "https://" + System.getProperty("selenoid_credentials") + "@" + System.getProperty("selenoid_url") + ":4444/wd/hub";
         Configuration.browser = System.getProperty("browser", "chrome");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
